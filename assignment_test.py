@@ -9,3 +9,4 @@ def test1():
   assert st1.name == "Anita Bath"
   assert round(st1.average(),1) == 89.4
   assert st1.getHonorRoll() == True 
+

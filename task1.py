@@ -22,6 +22,9 @@ getGrades(list) - Receives a list of grades and stores that in the class propert
 constructor     - should require the student name, studentNumber and grade (in that order)
 """
 
+from typing import List
+
+
 class student:
 
     # properties should be listed first
@@ -37,30 +40,38 @@ class student:
         self.grade = grade
         pass
 
+    def getCourses(self,list):
+        self.courses = list
+
+    def getGrades(self,list):
+        self.grades = list
+
     def __del__(self):
         pass
 
+    def showCourses(self):
+        print(self.courses)
+
+    def showGrade(self,A):
+        print(self.courses[A-1])
+        print(self.grades[A-1])
+
     def average(self):
-        sum(grades)
-        pass
+        return sum(self.grades)/len(self.grades)
 
     def getHonorRoll(self):
-        if sum(grades)/len(grades) >= 86:
+        self.grades.sort(reverse=True)
+        a = []
+        for i in range(1,6):
+            a.append(self.grades[i-1])
+        if sum(a)/5 >= 86:
             return True
         else:
             return False
     
-    def showCourses(self):
-        print(courses)
 
-    def showGrade(self):
-        print(courses)
-        print(grades)
 
-    def getCourses(self,a):
-        self.courses = courses + a
-    def getGrades(self,a):
-        self.grades = grades + a
+    
     
 
     
@@ -77,7 +88,12 @@ def main():
     st2.getCourses( ["English","Math","Physics","Computers","Geography","Chemistry","French"] )
     st2.getGrades( [71, 98, 93, 95, 68, 81, 71])
 
-
+    st1 = student("Anita Bath","91334",11)
+    st1.getCourses( ["English","Math","PE","Computers","History","Biology","Japanese"] )
+    st1.getGrades( [91, 94, 87, 99, 82, 100, 73])
+    assert st1.name == "Anita Bath"
+    assert round(st1.average(),1) == 89.4
+    assert st1.getHonorRoll() == True 
 
 
 main()
